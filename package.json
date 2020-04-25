@@ -1,0 +1,19 @@
+{
+  "name": "you_code_compiler",
+  "version": "1.0.0",
+  "description": "A Smart Code Compiler\u001b[D\u001b[C IDE",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "server": "nodemon index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tushar Ojha",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
