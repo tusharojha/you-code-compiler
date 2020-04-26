@@ -1,41 +1,17 @@
 // Library Imports
 import React, { useState } from "react";
-import AceEditor from "react-ace";
 
-import "ace-builds/src-noconflict/mode-java";
-import "ace-builds/src-noconflict/theme-monokai";
-
+// Project Imports
+import CodeEditor from "./CodeEditor";
+import Header from "./Header";
 
 const App = () => {
-  const [code, setCode] = useState("")
-  const onLoad = ()=>{
-    console.log("loaded")
-  };
-  const onChange = (data)=>{
-    setCode(data)
-  }
+  const [language, setLanguage] = useState("java");
+
   return (
-    <div>
-      <AceEditor
-        placeholder="Code goes here"
-        mode="java"
-        theme="monokai"
-        name="editor"
-        onLoad={onLoad}
-        onChange={onChange}
-        fontSize={14}
-        value={code}
-        showPrintMargin={true}
-        showGutter={true}
-        highlightActiveLine={true}
-        setOptions={{
-          enableBasicAutocompletion: false,
-          enableLiveAutocompletion: true,
-          enableSnippets: false,
-          showLineNumbers: true,
-          tabSize: 2,
-        }}
-      />
+    <div style={{ height: "100%", width: "100%" }}>
+      <Header value={language} onChangeLanguage={({ value }) => setLanguage(value)} />
+      <CodeEditor programmingLanguage={language} />
     </div>
   );
 };
