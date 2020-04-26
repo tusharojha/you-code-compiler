@@ -7,7 +7,6 @@ import CodeEditor from "./CodeEditor";
 import Header from "./Header";
 
 const App = () => {
-  
   // Styles
   const customButton = {
     backgroundColor: "#4CAF50" /* Green */,
@@ -24,12 +23,16 @@ const App = () => {
   // state hooks
   const [language, setLanguage] = useState("java");
   const [code, setCode] = useState("");
+  const [status, setStatus] = useState("Run");
 
   // run button callback
   const runCode = () => {
-    axios.post("/runCode", {language, code}).then((res)=>console.log(res))
+    setStatus("Loading...");
+    axios.post("/runCode", { language, code }).then((res) => {
+      console.log(res);
+      setStatus("Run");
+    });
   };
-  
 
   return (
     <div style={{ height: "100%", width: "100%" }}>
@@ -37,9 +40,17 @@ const App = () => {
         value={language}
         onChangeLanguage={({ value }) => setLanguage(value)}
       />
-      <CodeEditor value={code} onCodeChange={(text)=>setCode(text)} programmingLanguage={language} />
-      <button onClick={() => runCode()} style={customButton}>
-        Run
+      <CodeEditor
+        value={code}
+        onCodeChange={(text) => setCode(text)}
+        programmingLanguage={language}
+      />
+      <button
+        onClick={() => runCode()}
+        disabled={status === "Run" ? false : true}
+        style={customButton}
+      >
+        {status}
       </button>
     </div>
   );
