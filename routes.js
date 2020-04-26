@@ -13,7 +13,7 @@ router.post("/runCode", (req, res) => {
     var program = {
         script : req.body.code,
         language: req.body.language,
-        stdin: "tushar",
+        stdin: req.body.input,
         versionIndex: "0",
         clientId,
         clientSecret

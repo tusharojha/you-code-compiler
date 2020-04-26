@@ -4,6 +4,8 @@ import axios from "axios";
 
 // Project Imports
 import CodeEditor from "./CodeEditor";
+import InputEditor from "./InputEditor";
+import OutputLogs from "./OutputLogs";
 import Header from "./Header";
 
 const App = () => {
@@ -23,13 +25,22 @@ const App = () => {
   // state hooks
   const [language, setLanguage] = useState("java");
   const [code, setCode] = useState("");
+  const [input, setInput] = useState("");
+  const [outputLogs, setOutputLogs] = useState("");
   const [status, setStatus] = useState("Run");
 
   // run button callback
   const runCode = () => {
     setStatus("Loading...");
-    axios.post("/runCode", { language, code }).then((res) => {
-      console.log(res);
+    axios.post("/runCode", { language, code, input }).then((res) => {
+      if (res.data.memory && res.data.cpuTime) {
+        setOutputLogs("");
+        setOutputLogs(
+          `Memory Used: ${res.data.memory} \nCPU Time: ${res.data.cpuTime} \n${res.data.output} `
+        );
+      } else {
+        setOutputLogs(`${res.data.output} `);
+      }
       setStatus("Run");
     });
   };
@@ -52,6 +63,13 @@ const App = () => {
       >
         {status}
       </button>
+      <div style={{ flexDirection: "row", width: "100%" }}>
+        <InputEditor
+          value={input}
+          onInputChange={(text) => {console.log(text); setInput(text)}}
+        />
+        <OutputLogs value={outputLogs} />
+      </div>
     </div>
   );
 };
