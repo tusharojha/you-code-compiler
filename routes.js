@@ -3,6 +3,9 @@ const express = require("express");
 
 const router = express.Router();
 
-router.get("/name", (req, res) => res.send("tushar"));
+router.post("/runCode", (req, res) => {
+    console.log(req.body)
+    return res.status(201).send("tushar")
+});
 
 module.exports = router;

@@ -1,5 +1,5 @@
 // Library Imports
-import React, { useState } from "react";
+import React from "react";
 import AceEditor from "react-ace";
 
 import "ace-builds/src-noconflict/mode-java";
@@ -7,25 +7,21 @@ import "ace-builds/src-noconflict/mode-python";
 import "ace-builds/src-noconflict/theme-monokai";
 
 
-const CodeEditor = ({ programmingLanguage }) => {
-  const [code, setCode] = useState("");
+const CodeEditor = ({ value, onCodeChange, programmingLanguage }) => {
   const onLoad = () => {
     console.log("code editor loaded");
   };
-  const onChange = (data) => {
-    setCode(data);
-  };
   return (
       <AceEditor
-        style={{ height: '400px'}}
+        style={{ width: '80%', height: '400px'}}
         placeholder="Code goes here"
         mode={programmingLanguage}
         theme="monokai"
         name="editor"
         onLoad={onLoad}
-        onChange={onChange}
+        onChange={onCodeChange}
         fontSize={14}
-        value={code}
+        value={value}
         showPrintMargin={true}
         showGutter={true}
         highlightActiveLine={true}
