@@ -4,9 +4,47 @@ pre {
   border-radius: 2px;
   border: 1px solid #ccc;
 }
-.nm{
-    width: 130px;
-    float: center;
+
+.customButton {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-flex;
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+.inputEditor,
+.outputLogs {
+  width: 40% !important;
+  margin-top: 20px;
+  margin-right: 10px;
+  display: inline-block;
+  height: 100px !important;
+}
+
+.codeEditor {
+  width: 80% !important;
+  height: 400px;
+}
+
+@media (max-width: 767px) {
+  .inputEditor,
+  .outputLogs {
+    width: 100% !important;
+    margin-right: 0;
+  }
+  .codeEditor {
+    width: 100% !important;
+  }
+}
+.nm {
+  display: inline-flex;
+  float: left;
+  height: 40px;
 }
 pre code {
   line-height: 20px;

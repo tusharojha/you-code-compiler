@@ -7,21 +7,9 @@ import CodeEditor from "./CodeEditor";
 import InputEditor from "./InputEditor";
 import OutputLogs from "./OutputLogs";
 import Header from "./Header";
+import "./styles.css";
 
 const App = () => {
-  // Styles
-  const customButton = {
-    backgroundColor: "#4CAF50" /* Green */,
-    border: "none",
-    color: "white",
-    padding: "15px 32px",
-    marginTop: "5px",
-    textAlign: "center",
-    textDecoration: "none",
-    display: "inline-block",
-    fontSize: "16px",
-  };
-
   // state hooks
   const [language, setLanguage] = useState("java");
   const [code, setCode] = useState("");
@@ -49,6 +37,8 @@ const App = () => {
     <div style={{ height: "100%", width: "100%" }}>
       <Header
         value={language}
+        status={status}
+        runCode={() => runCode()}
         onChangeLanguage={({ value }) => setLanguage(value)}
       />
       <CodeEditor
@@ -56,18 +46,8 @@ const App = () => {
         onCodeChange={(text) => setCode(text)}
         programmingLanguage={language}
       />
-      <button
-        onClick={() => runCode()}
-        disabled={status === "Run" ? false : true}
-        style={customButton}
-      >
-        {status}
-      </button>
-      <div style={{ flexDirection: "row", width: "100%" }}>
-        <InputEditor
-          value={input}
-          onInputChange={(text) => {console.log(text); setInput(text)}}
-        />
+      <div className="optionSegment">
+        <InputEditor value={input} onInputChange={(text) => setInput(text)} />
         <OutputLogs value={outputLogs} />
       </div>
     </div>
