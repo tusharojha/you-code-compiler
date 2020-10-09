@@ -9,6 +9,7 @@ const Header = ({ onChangeLanguage, value, runCode, status }) => {
     { value: "java", label: "Java" },
     { value: "python", label: "Python 3" },
     { value: "cpp17", label: "C/C++" },
+    { value: "dart", label: "Dart"},
   ];
   return (
     <div style={{ textAlign: "center", width: "100%" }}>
