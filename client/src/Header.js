@@ -10,6 +10,7 @@ const Header = ({ onChangeLanguage, value, runCode, status }) => {
     { value: "python", label: "Python 3" },
     { value: "cpp17", label: "C/C++" },
     { value: "dart", label: "Dart"},
+    { value: "kotlin", label: "Kotlin" },
   ];
   return (
     <div style={{ textAlign: "center", width: "100%" }}>
