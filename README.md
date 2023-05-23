@@ -2,7 +2,7 @@
 
 You Code Compiler is an online IDE for Java & Python which provides an interface for you to enter input parameters as well. It is developed in MERN stack (MongoDB is not implemented as it was not needed as of now).
 
-As it is an open source project, any pull requests and issues are certainly welcomed.
+As it is an open source project, any pull requests and issues are certainly welcome.
 
 # Live Demo
 
