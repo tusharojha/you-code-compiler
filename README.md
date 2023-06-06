@@ -27,4 +27,4 @@ It uses React-Ace for code writing area and JDOODLE apis for compiling code.
 Contribute to the repo in following ways:
 
 - Filing Issues
-- Opening Pull Request for solving issues and feature improvement.
+- Opening Pull Request for solving issues and feature improvement
